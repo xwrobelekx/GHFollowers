@@ -11,7 +11,7 @@ import UIKit
 class FollowersCell: UICollectionViewCell {
     
     static let reuseID = "FollowersCell"
-    let avatarImaheView = GFAvatarImageView(frame: .zero)
+    let avatarImageView = GFAvatarImageView(frame: .zero)
     let userNameLabel = GFTitleLabel(textAlligment: .center, fontSize: 16)
     
 
@@ -29,18 +29,18 @@ class FollowersCell: UICollectionViewCell {
     }
     
     private func configure() {
-        addSubview(avatarImaheView)
+        addSubview(avatarImageView)
         addSubview(userNameLabel)
         
         let padding: CGFloat = 8
         
         NSLayoutConstraint.activate([
-            avatarImaheView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            avatarImaheView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            avatarImaheView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            avatarImaheView.heightAnchor.constraint(equalTo: avatarImaheView.widthAnchor),
+            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
             
-            userNameLabel.topAnchor.constraint(equalTo: avatarImaheView.bottomAnchor, constant: 12),
+            userNameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
             userNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             userNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             userNameLabel.heightAnchor.constraint(equalToConstant: 20)
