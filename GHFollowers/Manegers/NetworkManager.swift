@@ -6,12 +6,13 @@
 //  Copyright © 2020 Kamil Wrobel. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class NetworkManger {
     static let shared = NetworkManger()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     private init() {}
     
     
