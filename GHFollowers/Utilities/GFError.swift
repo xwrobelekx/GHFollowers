@@ -1,8 +1,8 @@
 //
-//  ErrorMessages.swift
+//  GFError.swift
 //  GHFollowers
 //
-//  Created by Kamil Wrobel on 2/25/20.
+//  Created by Kamil Wrobel on 3/1/20.
 //  Copyright © 2020 Kamil Wrobel. All rights reserved.
 //
 
