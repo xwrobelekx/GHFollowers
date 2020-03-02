@@ -28,7 +28,7 @@ class GFTitleLabel: UILabel {
     
     private func configure() {
         textColor = .label
-        textAlignment = .center
+//        textAlignment = .center
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9
         lineBreakMode = .byTruncatingTail
