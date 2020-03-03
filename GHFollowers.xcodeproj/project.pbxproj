@@ -11,6 +11,7 @@
 		3B08EF86240C9EA7005586B5 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF85240C9EA7005586B5 /* GFUserInfoHeaderVC.swift */; };
 		3B08EF88240C9F1F005586B5 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF87240C9F1F005586B5 /* GFSecondaryTitleLabel.swift */; };
 		3B08EF8A240CA61E005586B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF89240CA61E005586B5 /* Constants.swift */; };
+		3B08EF8C240DF7CB005586B5 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF8B240DF7CB005586B5 /* GFItemInfoView.swift */; };
 		3B526F7A23FB7FAC00526FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B526F7923FB7FAC00526FBD /* AppDelegate.swift */; };
 		3B526F7C23FB7FAC00526FBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B526F7B23FB7FAC00526FBD /* SceneDelegate.swift */; };
 		3B526F8323FB7FAE00526FBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B526F8223FB7FAE00526FBD /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		3B08EF85240C9EA7005586B5 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		3B08EF87240C9F1F005586B5 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		3B08EF89240CA61E005586B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3B08EF8B240DF7CB005586B5 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		3B526F7623FB7FAC00526FBD /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B526F7923FB7FAC00526FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B526F7B23FB7FAC00526FBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				3BD4DED4240A05470006050A /* GFEmptyStateView.swift */,
+				3B08EF8B240DF7CB005586B5 /* GFItemInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				3BD4DECE2408B8F10006050A /* UIHelper.swift in Sources */,
 				3BD4DEC424061E8A0006050A /* NetworkManager.swift in Sources */,
 				3B526F7C23FB7FAC00526FBD /* SceneDelegate.swift in Sources */,
+				3B08EF8C240DF7CB005586B5 /* GFItemInfoView.swift in Sources */,
 				3B526FA023FF858E00526FBD /* GFBodyLabel.swift in Sources */,
 				3B08EF8A240CA61E005586B5 /* Constants.swift in Sources */,
 			);
