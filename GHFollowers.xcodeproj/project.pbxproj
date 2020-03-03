@@ -13,6 +13,8 @@
 		3B08EF8A240CA61E005586B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF89240CA61E005586B5 /* Constants.swift */; };
 		3B08EF8C240DF7CB005586B5 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF8B240DF7CB005586B5 /* GFItemInfoView.swift */; };
 		3B08EF8E240DFC0B005586B5 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF8D240DFC0B005586B5 /* GFItemInfoVC.swift */; };
+		3B08EF90240DFF01005586B5 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF8F240DFF01005586B5 /* GFRepoItemVC.swift */; };
+		3B08EF92240E0129005586B5 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B08EF91240E0129005586B5 /* GFFollowerItemVC.swift */; };
 		3B526F7A23FB7FAC00526FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B526F7923FB7FAC00526FBD /* AppDelegate.swift */; };
 		3B526F7C23FB7FAC00526FBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B526F7B23FB7FAC00526FBD /* SceneDelegate.swift */; };
 		3B526F8323FB7FAE00526FBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B526F8223FB7FAE00526FBD /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		3B08EF89240CA61E005586B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3B08EF8B240DF7CB005586B5 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		3B08EF8D240DFC0B005586B5 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
+		3B08EF8F240DFF01005586B5 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
+		3B08EF91240E0129005586B5 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		3B526F7623FB7FAC00526FBD /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B526F7923FB7FAC00526FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B526F7B23FB7FAC00526FBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,11 +88,21 @@
 		3B08EF84240C9E7C005586B5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B08EF93240E0180005586B5 /* ItemInfoVC */,
 				3B526FA123FF864200526FBD /* GFAlertVC.swift */,
 				3B08EF85240C9EA7005586B5 /* GFUserInfoHeaderVC.swift */,
-				3B08EF8D240DFC0B005586B5 /* GFItemInfoVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3B08EF93240E0180005586B5 /* ItemInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				3B08EF8D240DFC0B005586B5 /* GFItemInfoVC.swift */,
+				3B08EF8F240DFF01005586B5 /* GFRepoItemVC.swift */,
+				3B08EF91240E0129005586B5 /* GFFollowerItemVC.swift */,
+			);
+			path = ItemInfoVC;
 			sourceTree = "<group>";
 		};
 		3B526F6D23FB7FAC00526FBD = {
@@ -327,6 +341,7 @@
 				3B526FA223FF864200526FBD /* GFAlertVC.swift in Sources */,
 				3B08EF83240C3DC9005586B5 /* GFError.swift in Sources */,
 				3BD4DECC2408A13D0006050A /* GFAvatarImageView.swift in Sources */,
+				3B08EF90240DFF01005586B5 /* GFRepoItemVC.swift in Sources */,
 				3BD4DEC12406192D0006050A /* User.swift in Sources */,
 				3BD4DED7240C35C10006050A /* UserInfoVC.swift in Sources */,
 				3B526F7A23FB7FAC00526FBD /* AppDelegate.swift in Sources */,
@@ -334,6 +349,7 @@
 				3B526F9E23FF841400526FBD /* GFTitleLabel.swift in Sources */,
 				3B526FA423FF8CD300526FBD /* UIViewControllerExtension.swift in Sources */,
 				3B08EF8E240DFC0B005586B5 /* GFItemInfoVC.swift in Sources */,
+				3B08EF92240E0129005586B5 /* GFFollowerItemVC.swift in Sources */,
 				3B526F9A23FF76C900526FBD /* FollowerListVC.swift in Sources */,
 				3BD4DECE2408B8F10006050A /* UIHelper.swift in Sources */,
 				3BD4DEC424061E8A0006050A /* NetworkManager.swift in Sources */,
