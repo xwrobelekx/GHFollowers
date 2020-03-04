@@ -13,6 +13,7 @@ class UserInfoVC: UIViewController {
     let headerView = UIView()
     let itemView1 = UIView()
     let itemView2 = UIView()
+    let dateLabel = GFBodyLabel(textAlligment: .center)
     var itemViews: [UIView] = []
     
     var username: String!
@@ -44,6 +45,7 @@ class UserInfoVC: UIViewController {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
                     self.add(childVC: GFRepoItemVC(user: user), to: self.itemView1)
                     self.add(childVC: GFFollowerItemVC(user: user), to: self.itemView2)
+                    self.dateLabel.text = "GitHub user since: \(user.createdAt.convertToDispalyFormat())"
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
@@ -53,7 +55,7 @@ class UserInfoVC: UIViewController {
     
     
     func layoutUI() {
-        itemViews = [headerView, itemView1, itemView2]
+        itemViews = [headerView, itemView1, itemView2, dateLabel]
         
         let padding : CGFloat = 20
         let itemHeight : CGFloat = 140
@@ -67,12 +69,9 @@ class UserInfoVC: UIViewController {
             itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             ])
         }
-        
-        
 
         headerView.backgroundColor = .systemBackground
-//        itemView1.backgroundColor = .systemTeal
-//        itemView2.backgroundColor = .systemRed
+
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -82,7 +81,10 @@ class UserInfoVC: UIViewController {
             itemView1.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemView2.topAnchor.constraint(equalTo: itemView1.bottomAnchor, constant: padding),
-            itemView2.heightAnchor.constraint(equalToConstant: itemHeight)
+            itemView2.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemView2.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
             
         ])
     }
