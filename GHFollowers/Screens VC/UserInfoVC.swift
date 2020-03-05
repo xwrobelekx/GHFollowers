@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol UserInfoVCDekegate: class {
+    func didTapGitGubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
+
+
 class UserInfoVC: UIViewController {
     
     let headerView = UIView()
@@ -17,6 +24,7 @@ class UserInfoVC: UIViewController {
     var itemViews: [UIView] = []
     
     var username: String!
+    weak var delegate: FollowerListVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,15 +50,27 @@ class UserInfoVC: UIViewController {
             case .success(let user):
                 print(user)
                 DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemView1)
-                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemView2)
-                    self.dateLabel.text = "GitHub user since: \(user.createdAt.convertToDispalyFormat())"
+                    self.configureUIElements(with: user)
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
         }
+    }
+    
+    func configureUIElements(with user: User){
+        
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+        
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
+        
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        self.add(childVC: repoItemVC, to: self.itemView1)
+        self.add(childVC: followerItemVC, to: self.itemView2)
+        self.dateLabel.text = "GitHub user since: \(user.createdAt.convertToDispalyFormat())"
+        
     }
     
     
@@ -104,4 +124,31 @@ class UserInfoVC: UIViewController {
 
 
 
+}
+
+
+extension UserInfoVC: UserInfoVCDekegate {
+    func didTapGitGubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid", buttonTitle: "OK")
+            return
+        }
+        presentSafariVC(with: url)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers", buttonTitle: "OK")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dismisVC()
+    }
+    
+    
+    
+    
+    
+    
+    
 }

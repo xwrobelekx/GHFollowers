@@ -21,8 +21,8 @@ class GFBodyLabel: UILabel {
     
     init(textAlligment: NSTextAlignment) {
         super.init(frame: .zero)
-        self.textAlignment = textAlignment
         configure()
+        self.textAlignment = textAlligment
     }
     
     private func configure() {
@@ -32,6 +32,7 @@ class GFBodyLabel: UILabel {
         minimumScaleFactor = 0.75
         lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
+        print("\(textAlignment.rawValue)")
     }
     
 }
