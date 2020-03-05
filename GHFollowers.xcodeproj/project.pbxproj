@@ -31,6 +31,7 @@
 		3B526FA423FF8CD300526FBD /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B526FA323FF8CD300526FBD /* UIViewControllerExtension.swift */; };
 		3B582405240F4560003C05B1 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B582404240F4560003C05B1 /* Date+Ext.swift */; };
 		3B582407240F458F003C05B1 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B582406240F458F003C05B1 /* String+Ext.swift */; };
+		3B65AF4524109C37005F0EAE /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B65AF4424109C37005F0EAE /* PersistenceManager.swift */; };
 		3BD4DEBF240618670006050A /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4DEBE240618670006050A /* Follower.swift */; };
 		3BD4DEC12406192D0006050A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4DEC02406192D0006050A /* User.swift */; };
 		3BD4DEC424061E8A0006050A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD4DEC324061E8A0006050A /* NetworkManager.swift */; };
@@ -68,6 +69,7 @@
 		3B526FA323FF8CD300526FBD /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		3B582404240F4560003C05B1 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		3B582406240F458F003C05B1 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		3B65AF4424109C37005F0EAE /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		3BD4DEBE240618670006050A /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		3BD4DEC02406192D0006050A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3BD4DEC324061E8A0006050A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				3BD4DEC324061E8A0006050A /* NetworkManager.swift */,
+				3B65AF4424109C37005F0EAE /* PersistenceManager.swift */,
 			);
 			path = Manegers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				3B526FA223FF864200526FBD /* GFAlertVC.swift in Sources */,
 				3B08EF83240C3DC9005586B5 /* GFError.swift in Sources */,
 				3BD4DECC2408A13D0006050A /* GFAvatarImageView.swift in Sources */,
+				3B65AF4524109C37005F0EAE /* PersistenceManager.swift in Sources */,
 				3B08EF90240DFF01005586B5 /* GFRepoItemVC.swift in Sources */,
 				3BD4DEC12406192D0006050A /* User.swift in Sources */,
 				3BD4DED7240C35C10006050A /* UserInfoVC.swift in Sources */,

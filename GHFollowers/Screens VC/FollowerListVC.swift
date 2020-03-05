@@ -47,13 +47,18 @@
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
+    
+    
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
         collectionView.delegate = self
-        collectionView.backgroundColor = .systemGreen
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowersCell.self, forCellWithReuseIdentifier: FollowersCell.reuseID)
     }
     
@@ -114,6 +119,33 @@
         }
     }
     
+    @objc func addButtonTapped() {
+        print("elo elo added")
+        showLodingView()
+        
+        NetworkManger.shared.getUserInfo(for: userName) { [weak self] result in
+            guard let self = self else {return}
+            self.dismissLoadingView()
+            
+            switch result {
+            case .success(let user):
+                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                
+                PersistanceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+                    guard let self = self else { return }
+                    guard let error = error else {
+                        self.presentGFAlertOnMainThread(title: "Succes", message: "You have succesfully favorited this user", buttonTitle: "Great")
+                        return
+                    }
+                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+                    
+                }
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+            }
+        }
+    }
+    
     
  }
  
@@ -156,22 +188,19 @@
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased())}
         updateData(on: filteredFollowers)
     }
-    
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         updateData(on: self.followers)
         isSearching = false
     }
-    
-    
+
  }
  
  
  extension FollowerListVC: FollowerListVCDelegate {
     
     func didRequestFollowers(for username: String) {
-        // get followers for that user
-        print("👻")
+        // get followers for selected user
         self.userName = username
         title = userName
         page = 1
@@ -180,6 +209,4 @@
         collectionView.setContentOffset(.zero, animated: true)
         getFollowers(userName: username, page: page)
     }
-    
-    
  }
