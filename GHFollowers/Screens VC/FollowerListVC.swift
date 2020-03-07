@@ -12,7 +12,7 @@
     func didRequestFollowers(for username: String)
  }
  
- class FollowerListVC: UIViewController {
+ class FollowerListVC: GFDataLoadingVC {
     
     enum Section {
         case main
