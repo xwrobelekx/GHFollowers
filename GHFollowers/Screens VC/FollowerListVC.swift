@@ -83,10 +83,10 @@
         NetworkManger.shared.getFollowers(for: userName, page: page) { [weak self] result in
             guard let self = self else {return}
             self.dismissLoadingView()
+            
             switch result {
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "OK")
-                
             case .success(let followers):
                 if followers.count < 100 {self.hasMoreFollowers = false}
                 self.followers.append(contentsOf: followers)

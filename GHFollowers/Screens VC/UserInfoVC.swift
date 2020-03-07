@@ -120,10 +120,6 @@ class UserInfoVC: UIViewController {
     @objc func dismisVC() {
         dismiss(animated: true)
     }
-    
-
-
-
 }
 
 
@@ -144,11 +140,5 @@ extension UserInfoVC: UserInfoVCDekegate {
         delegate.didRequestFollowers(for: user.login)
         dismisVC()
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

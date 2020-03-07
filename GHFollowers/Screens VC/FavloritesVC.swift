@@ -40,7 +40,6 @@ class FavloritesVC: GFDataLoadingVC {
         tableView.dataSource = self
         
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
-        
     }
     
     
@@ -64,8 +63,6 @@ class FavloritesVC: GFDataLoadingVC {
             }
         }
     }
-    
-    
 }
 
 extension FavloritesVC: UITableViewDelegate, UITableViewDataSource {
