@@ -155,8 +155,6 @@
             }
         }
     }
-    
-    
  }
  
  
@@ -185,7 +183,6 @@
         let navController = UINavigationController(rootViewController: destinationcVC)
         present(navController, animated: true)
     }
-    
  }
  
  
@@ -203,7 +200,6 @@
         updateData(on: self.followers)
         isSearching = false
     }
-
  }
  
  
