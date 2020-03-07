@@ -19,10 +19,9 @@ class GFBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAlligment: NSTextAlignment) {
-        super.init(frame: .zero)
-        configure()
-        self.textAlignment = textAlligment
+    convenience init(textAlligment: NSTextAlignment) {
+        self.init(frame: .zero)
+        textAlignment = textAlligment
     }
     
     private func configure() {
@@ -32,7 +31,6 @@ class GFBodyLabel: UILabel {
         minimumScaleFactor = 0.75
         lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
-        print("\(textAlignment.rawValue)")
     }
     
 }
