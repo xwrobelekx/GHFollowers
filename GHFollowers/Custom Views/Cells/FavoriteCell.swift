@@ -41,7 +41,6 @@ class FavoriteCell: UITableViewCell {
         accessoryType = .disclosureIndicator
         let padding: CGFloat = 12
         
-        
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
