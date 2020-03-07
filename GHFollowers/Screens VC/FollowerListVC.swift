@@ -24,6 +24,7 @@
     var page: Int = 1
     var hasMoreFollowers = true
     var isSearching = false
+    var isLoadingMoreFolowers = false
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -77,9 +78,9 @@
     
     func getFollowers(userName: String, page: Int) {
         showLodingView()
+        isLoadingMoreFolowers = true
+        
         NetworkManger.shared.getFollowers(for: userName, page: page) { [weak self] result in
-            
-
             guard let self = self else {return}
             self.dismissLoadingView()
             switch result {
@@ -98,6 +99,7 @@
                 }
                 self.updateData(on: self.followers)
             }
+            self.isLoadingMoreFolowers = false
         }
     }
     
@@ -165,7 +167,7 @@
         let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else {return}
+            guard hasMoreFollowers, !isLoadingMoreFolowers else {return}
             page += 1
             getFollowers(userName: userName, page: page)
         }
