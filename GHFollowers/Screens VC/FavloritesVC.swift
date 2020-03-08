@@ -10,9 +10,12 @@ import UIKit
 
 class FavloritesVC: GFDataLoadingVC {
     
+    //MARK: Properties
     let tableView = UITableView()
     var favorites: [Follower] = []
     
+    
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -25,6 +28,8 @@ class FavloritesVC: GFDataLoadingVC {
         getFavorites()
     }
     
+    
+    //MARK: - Configure methods
     func configureViewController() {
         view.backgroundColor = .systemBackground
         title = "Favorites"
@@ -44,28 +49,35 @@ class FavloritesVC: GFDataLoadingVC {
     }
     
     
+    //MARK: - Helper Methods
     func getFavorites() {
         PersistanceManager.retriveFavorites { [weak self] result in
             guard let self = self else {return}
             
             switch result {
             case .success(let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyStateView(with: "No Favorites?\nAdd one on the Followers screen.", in: self.view)
-                } else {
-                    self.favorites = favorites
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
+                self.updateUI(with: favorites)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
         }
     }
+    
+    func updateUI(with favorites: [Follower]) {
+        if favorites.isEmpty {
+            self.showEmptyStateView(with: "No Favorites?\nAdd one on the Followers screen.", in: self.view)
+        } else {
+            self.favorites = favorites
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.view.bringSubviewToFront(self.tableView)
+            }
+        }
+    }
 }
 
+
+// MARK: - Table View Data Source and Delegate Methods
 extension FavloritesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites.count

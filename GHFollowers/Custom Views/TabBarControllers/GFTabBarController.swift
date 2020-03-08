@@ -9,17 +9,16 @@
 import UIKit
 
 class GFTabBarController: UITabBarController {
-
+    
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemGreen
         viewControllers = [createSearchNC(), createFavoritesNC()]
-
-
-        // Do any additional setup after loading the view.
     }
     
-
+    
+    //MARK: - Helper Methods
     func createSearchNC() -> UINavigationController {
         let searchVC = SearchVC()
         searchVC.title = "Search"
@@ -33,6 +32,4 @@ class GFTabBarController: UITabBarController {
         favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         return UINavigationController(rootViewController: favoritesVC)
     }
-
-
 }

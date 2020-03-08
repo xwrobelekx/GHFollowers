@@ -10,12 +10,14 @@ import UIKit
 
 
 class NetworkManger {
+    
     static let shared = NetworkManger()
     private let baseURL = "https://api.github.com/users/"
     let cache = NSCache<NSString, UIImage>()
     private init() {}
     
     
+    //MARK: - Get Followers
     func getFollowers(for username: String, page: Int, completed: @escaping(
         Result<[Follower], GFError>) -> Void) {
         
@@ -52,11 +54,10 @@ class NetworkManger {
             }
         }
         task.resume()
-        
     }
     
     
-    
+    //MARK: - Get User Info
     func getUserInfo(for username: String, completed: @escaping(
         Result<User, GFError>) -> Void) {
         
@@ -98,6 +99,7 @@ class NetworkManger {
     }
     
     
+    //MARK: - Download Images
     func downloadImages(from urlString: String, completed: @escaping (UIImage?) -> Void) {
         let cacheKey = NSString(string: urlString)
         
@@ -114,18 +116,17 @@ class NetworkManger {
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self,
-            error == nil,
-            let response = response as? HTTPURLResponse, response.statusCode == 200,
-            let data = data,
-            let image = UIImage(data: data) else {
-                completed(nil)
-                return
+                error == nil,
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data) else {
+                    completed(nil)
+                    return
             }
             self.cache.setObject(image, forKey: cacheKey)
             completed(image)
-
+            
         }
         task.resume()
     }
-    
 }

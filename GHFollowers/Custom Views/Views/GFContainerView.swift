@@ -10,7 +10,6 @@ import UIKit
 
 class GFContainerView: UIView {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,7 +19,6 @@ class GFContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func configure() {
         self.backgroundColor = .systemBackground
         self.layer.cornerRadius = 16
@@ -29,9 +27,5 @@ class GFContainerView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         
     }
-    
-    
-    
-    
 }
 

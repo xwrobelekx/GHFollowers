@@ -10,16 +10,17 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    //MARK: - Properties
     let logoImageView = UIImageView()
     let userNameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
-    var logoImageViewTopConstraint: NSLayoutConstraint!
     
     var isUserNameEntered : Bool {
         return !userNameTextField.text!.isEmpty
     }
     
-
+    
+    //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -38,6 +39,7 @@ class SearchVC: UIViewController {
     }
     
     
+    //MARK: - Tap Gesture
     func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -54,19 +56,17 @@ class SearchVC: UIViewController {
         let followerVC = FollowerListVC(username: userNameTextField.text!)
         navigationController?.pushViewController(followerVC, animated: true)
     }
-
     
+    
+    //MARK: - Configure Methods
     func configureLogoImageView(){
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
         
         let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
-        
-        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
-        
-        logoImageViewTopConstraint.isActive = true
-        
+            
         NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
@@ -97,14 +97,10 @@ class SearchVC: UIViewController {
 }
 
 
-
-
-
+//MARK: - TextFiled Delegate
 extension SearchVC: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
         return true
     }
-    
 }

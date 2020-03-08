@@ -10,6 +10,8 @@ import UIKit
 
 class GFAlertVC: UIViewController {
     
+    
+    //MARK: - Properties
     let containerView = GFContainerView()
     let titleLabel = GFTitleLabel(textAlligment: .center, fontSize: 20)
     let messageLabel = GFBodyLabel(textAlligment: .center)
@@ -21,6 +23,8 @@ class GFAlertVC: UIViewController {
     
     var padding: CGFloat = 20
     
+    
+    //MARK: - Initalizers
     init(title: String, message: String, buttonTitle: String){
         super.init(nibName: nil, bundle: nil)
         self.alertTitle = title
@@ -32,6 +36,8 @@ class GFAlertVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
@@ -40,11 +46,10 @@ class GFAlertVC: UIViewController {
         configureTitleLabel()
         configureActionButton()
         configureMEssageLabel()
-
+        
     }
     
-    
-    
+    //MARK: - Configure Methods
     func configureContainer() {        
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -53,7 +58,7 @@ class GFAlertVC: UIViewController {
             containerView.heightAnchor.constraint(equalToConstant: 220)
         ])
     }
-
+    
     
     func configureTitleLabel() {
         titleLabel.text = alertTitle ?? "Something went wrong"
@@ -90,12 +95,9 @@ class GFAlertVC: UIViewController {
         ])
     }
     
+    
+    //MARK: - Target Action Methods
     @objc func dismissVC() {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-
-
 }

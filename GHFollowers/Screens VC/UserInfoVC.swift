@@ -16,6 +16,7 @@ protocol UserInfoVCDelegate: class {
 
 class UserInfoVC: UIViewController {
     
+    //MARK: - Properties
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -28,6 +29,8 @@ class UserInfoVC: UIViewController {
     var username: String!
     weak var delegate: UserInfoVCDelegate!
     
+    
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVC()
@@ -37,27 +40,11 @@ class UserInfoVC: UIViewController {
     }
     
     
+    //MARK: - Configure Methods
     func configureVC() {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismisVC))
         navigationItem.rightBarButtonItem = doneButton
-    }
-    
-    
-    func getUserInfo() {
-        NetworkManger.shared.getUserInfo(for: username) { [weak self] result in
-            guard let self = self else {return}
-            
-            switch result {
-            case .success(let user):
-                print(user)
-                DispatchQueue.main.async {
-                    self.configureUIElements(with: user)
-                }
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
-            }
-        }
     }
     
     func configureUIElements(with user: User){
@@ -76,7 +63,7 @@ class UserInfoVC: UIViewController {
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 600)
+            contentView.heightAnchor.constraint(equalToConstant: 600 )
         ])    }
     
     
@@ -114,6 +101,26 @@ class UserInfoVC: UIViewController {
         ])
     }
     
+    
+    //MARK: - Helper Methods
+    func getUserInfo() {
+        NetworkManger.shared.getUserInfo(for: username) { [weak self] result in
+            guard let self = self else {return}
+            
+            switch result {
+            case .success(let user):
+                print(user)
+                DispatchQueue.main.async {
+                    self.configureUIElements(with: user)
+                }
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
+            }
+        }
+    }
+    
+
+    //MARK: - Helper Methods
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)
@@ -121,11 +128,15 @@ class UserInfoVC: UIViewController {
         childVC.didMove(toParent: self)
     }
     
+    
+    //MARK: - Target Action Methods
     @objc func dismisVC() {
         dismiss(animated: true)
     }
 }
 
+
+//MARK: - Follower Item Delegate Conformance Methods
 extension UserInfoVC: GFFollowerItemVCDelegate {
     func didTapGetFollowers(for user: User) {
         guard user.followers != 0 else {
@@ -137,6 +148,8 @@ extension UserInfoVC: GFFollowerItemVCDelegate {
     }
 }
 
+
+//MARK: - Repo Item Delegate Conformance Methods
 extension UserInfoVC: GFRepoItemVCDelegate {
     func didTapGitGubProfile(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {

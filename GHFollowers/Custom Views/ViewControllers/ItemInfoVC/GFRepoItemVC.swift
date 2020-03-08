@@ -15,8 +15,11 @@ protocol GFRepoItemVCDelegate: class {
 
 class GFRepoItemVC : GFItemInfoVC {
     
+    //MARK: - Properties
     weak var delegate: GFRepoItemVCDelegate!
     
+    
+    //MARK: - Initalizers
     init(user: User, delegate: GFRepoItemVCDelegate){
         super.init(user: user)
         self.delegate = delegate
@@ -27,17 +30,22 @@ class GFRepoItemVC : GFItemInfoVC {
     }
     
     
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItems()
     }
     
+    
+    //MARK: - Configure Methods
     private func configureItems() {
         itemInfoViewOne.set(itemInfoType: .repos, with: user.publicRepos)
         itemInfoViewTwo.set(itemInfoType: .gists, with: user.publicGists)
         actionButton.set(backgroudColor: .systemPurple, title: "GitHub Profile")
     }
     
+    
+    //MARK: - Action Methods
     override func actionButtonTapped() {
         delegate.didTapGitGubProfile(for: user)
     }
